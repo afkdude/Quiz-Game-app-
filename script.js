@@ -45,22 +45,28 @@ const optionsEl = document.getElementById('options');
 
 // optionsEl.appendChild(buttonEl);
 
-//approach 1 
+//approach 1
 // for (i = 0; i < options.length; i++){
-//   const buttonEl = document.createElement("button"); 
-//   buttonEl.textContent = options[i]; 
+//   const buttonEl = document.createElement("button");
+//   buttonEl.textContent = options[i];
 //   optionsEl.append(buttonEl);
 // }
 
+
+
+//fetching shuffled array of options
+const shuffleOptions = shuffledOptions(options);
 //aproach 2 using foreach loop
 
-options.forEach((opt) => {
+
+
+shuffleOptions.forEach((opt) => {
   const buttonEl = document.createElement("button");
   buttonEl.textContent = opt;
   optionsEl.append(buttonEl)
     ;
   
-  
+
   //event handling of buttons
 
   buttonEl.addEventListener("click", ()=> {
@@ -95,6 +101,26 @@ options.forEach((opt) => {
 
   
 }); 
+
+//shuffling the options
+
+
+function shuffledOptions(options) {
+  for (let i = options.length - 1; i >= 0; i--){
+    const j = Math.floor(Math.random() * i + 1); 
+
+    [options[i], options[j]] = [options[j], options[i]]; 
+  }
+
+  return options; 
+}
+
+
+
+
+
+
+
 
 
 
